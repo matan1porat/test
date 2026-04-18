@@ -9,7 +9,7 @@ const products = [
     type: 'Analytics',
     tags: ['real-time', 'dashboards', 'alerts'],
     icon: '📊',
-    link: 'https://example.com/datapulse'
+    link: 'https://www.test.com/'
   },
   {
     id: 2,
