@@ -645,6 +645,7 @@ ul { list-style: none; }
   min-height: 800px;
 }
 
+
 .docs-viewer__active { display: flex; flex-direction: column; height: 100%; }
 
 .docs-viewer__bar {
