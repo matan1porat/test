@@ -7,14 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- Promo Banner -->
-  <div class="promo-banner">
-    Meridian Labs &mdash; Building tools for high-performance teams
-  </div>
+  
 
   <!-- Navigation -->
   <nav class="nav" id="nav">
@@ -48,8 +46,8 @@
   <section id="home" class="hero">
     <div class="container">
       <p class="hero__label">Team Showcase</p>
-      <h1 class="hero__title">TOOLS BUILT<br>FOR VELOCITY</h1>
-      <p class="hero__sub">Eight products across analytics, developer tools, design systems, and productivity &mdash; each one engineered to help teams move faster and think clearer.</p>
+      <h1 class="hero__title">הכלים שלנו<br>בשבילכם.</h1>
+      <p class="hero__sub">כלים שנוצרו בשבילכם ומסמכים שנכתבו לעיונכם &mdash; בתחלס כל מה שצריך כדי לחקור.</p>
       <div class="hero__actions">
         <a href="#products" class="btn btn--pill btn--dark">View All Products</a>
         <a href="#documents" class="btn btn--pill btn--outline">Resources</a>
@@ -79,7 +77,7 @@
       <div class="container">
         <div class="featured-band__header">
           <span class="label-upper">Featured Products</span>
-          <a href="#products" class="link-arrow">See all &rarr;</a>
+          <a href="#products" class="link-arrow">See all &larr;</a>
         </div>
         <div class="featured-band__grid" id="featuredGrid"></div>
       </div>
@@ -90,7 +88,7 @@
   <section id="products" class="section">
     <div class="container">
       <div class="section__head">
-        <h2 class="section__title">OUR PRODUCTS</h2>
+        <h2 class="section__title">הכלים שלנו</h2>
         <p class="section__sub">Crafted to elevate how teams operate across every discipline.</p>
       </div>
 
@@ -122,8 +120,8 @@
   <section id="documents" class="section section--alt">
     <div class="container">
       <div class="section__head">
-        <h2 class="section__title">DOCUMENTS</h2>
-        <p class="section__sub">Technical guides, company resources, and research reports.</p>
+        <h2 class="section__title">מסמכים</h2>
+        <p class="section__sub">מסמכים שיעזרו לכם לסדר קצת את הראש.</p>
       </div>
 
       <div class="filter-bar" id="docFilterBar" role="group" aria-label="Filter documents by topic"></div>
@@ -147,7 +145,7 @@
               <line x1="11" y1="18" x2="29" y2="18" stroke="#CACACB" stroke-width="1.5" stroke-linecap="round"/>
               <line x1="11" y1="24" x2="22" y2="24" stroke="#CACACB" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
-            <p>Select a document to view</p>
+            <p>בחר מסמך לצפייה</p>
           </div>
           <div class="docs-viewer__active" id="viewerActive" hidden>
             <div class="docs-viewer__bar">
@@ -156,8 +154,8 @@
                 <span class="label-upper docs-viewer__cat" id="viewerCat"></span>
               </div>
               <div class="docs-viewer__controls">
-                <a class="btn btn--pill btn--outline btn--sm" id="viewerDownload" href="#" target="_blank">Download</a>
-                <button class="btn btn--pill btn--outline btn--sm" id="viewerClose">Close</button>
+                <a class="btn btn--pill btn--outline btn--sm" id="viewerDownload" href="#" target="_blank">פתח בכרטיסייה חדשה</a>
+                <button class="btn btn--pill btn--outline btn--sm" id="viewerClose">סגור</button>
               </div>
             </div>
             <div class="docs-viewer__frame" >
@@ -184,7 +182,7 @@
       <div class="modal__bar">
         <h2 class="modal__title" id="modalTitle"></h2>
         <div class="modal__bar-right">
-          <a class="modal__ext" id="modalExt" href="#" target="_blank" rel="noopener noreferrer">Open in new tab &nearr;</a>
+          <a class="modal__ext" id="modalExt" href="#" target="_blank" rel="noopener noreferrer">פתח בכרטיסייה חדשה &nwarr;</a>
           <button class="modal__close" id="modalClose" aria-label="Close preview">&times;</button>
         </div>
       </div>

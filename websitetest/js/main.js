@@ -4,12 +4,13 @@
 const products = [
   {
     id: 1,
-    title: 'DataPulse',
+    title: 'וירוס',
     description: 'Real-time analytics dashboard for monitoring KPIs with customizable widgets, automated alerts, and exportable reports.',
     type: 'Analytics',
     tags: ['real-time', 'dashboards', 'alerts'],
     icon: '📊',
-    link: 'https://www.test.com/'
+    link: 'https://www.test.com/',
+    thumbnail:'assets/img/virusquestioning.png'
   },
   {
     id: 2,
@@ -18,7 +19,9 @@ const products = [
     type: 'Analytics',
     tags: ['BI', 'reporting', 'data'],
     icon: '📈',
-    link: 'https://example.com/metricflow'
+    link: 'https://example.com/metricflow',
+    thumbnail:'assets/img/suspectlineup.png'
+
   },
   {
     id: 3,
@@ -27,7 +30,9 @@ const products = [
     type: 'Developer Tools',
     tags: ['code-review', 'git', 'collaboration'],
     icon: '⌨️',
-    link: 'https://example.com/codesync'
+    link: 'https://example.com/codesync',
+    thumbnail:'assets/img/unknownpc.png'
+
   },
   {
     id: 4,
@@ -36,7 +41,9 @@ const products = [
     type: 'Developer Tools',
     tags: ['CI/CD', 'automation', 'deployment'],
     icon: '🤖',
-    link: 'https://example.com/buildbot'
+    link: 'https://example.com/buildbot',
+    thumbnail:'assets/img/unknowntelephone.png'
+
   },
   {
     id: 5,
@@ -210,13 +217,17 @@ function renderTagFilter() {
 
 function renderCard(p) {
   const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+  const thumbContent = p.thumbnail
+    ? `<img src="${p.thumbnail}" alt="${p.title}" class="product-card__image">`
+    : `<div class="product-card__placeholder">
+        <span class="product-card__placeholder-icon">${p.icon}</span>
+        <span class="product-card__placeholder-label">${p.type}</span>
+      </div>`;
+  
   return `
     <article class="product-card" data-type="${p.type}">
       <div class="product-card__thumb">
-        <div class="product-card__placeholder">
-          <span class="product-card__placeholder-icon">${p.icon}</span>
-          <span class="product-card__placeholder-label">${p.type}</span>
-        </div>
+        ${thumbContent}
       </div>
       <div class="product-card__body">
         <div class="product-card__row">
@@ -227,9 +238,9 @@ function renderCard(p) {
         <div class="product-card__tags">${tags}</div>
         <div class="product-card__actions">
           <a href="${p.link}" target="_blank" rel="noopener noreferrer"
-             class="btn btn--pill btn--outline btn--sm">Open Link</a>
+             class="btn btn--pill btn--outline btn--sm">פתח</a>
           <button class="btn btn--pill btn--dark btn--sm preview-btn"
-                  data-title="${p.title}" data-url="${p.link}">Preview</button>
+                  data-title="${p.title}" data-url="${p.link}">פתח בתצוגה מקדימה</button>
         </div>
       </div>
     </article>
