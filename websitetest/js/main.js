@@ -143,7 +143,7 @@ function renderFeatured() {
 
 /* ── State ── */
 let activeType = 'all';
-let activeTag  = 'all';
+let activeTags = new Set();
 let activeDocTopic = 'all';
 let productQuery = '';
 let docQuery = '';
@@ -160,7 +160,7 @@ function renderProducts() {
     if (activeType !== 'all' && activeType !== type) return '';
 
     let grouped = products.filter(p => p.type === type);
-    if (activeTag !== 'all') grouped = grouped.filter(p => p.tags.includes(activeTag));
+    if (activeTags.size > 0) grouped = grouped.filter(p => p.tags.some(t => activeTags.has(t)));
 
     if (productQuery) {
       const q = productQuery.toLowerCase();
@@ -190,8 +190,8 @@ function renderProducts() {
 
   grid.innerHTML = anyVisible ? html : `
     <div class="products-no-results">
-      <p class="products-no-results__title">No products found</p>
-      <p>Try a different search term or clear the filters</p>
+      <p class="products-no-results__title">לא נמצאו מוצרים</p>
+      <p>נסה חיפוש אחר או אפס את הסינונים</p>
     </div>
   `;
 
@@ -208,8 +208,8 @@ function renderTagFilter() {
     <div class="tag-filter-bar">
       <span class="tag-filter-label">Tags</span>
       <div class="filter-bar filter-bar--tags">
-        <button class="filter-pill filter-pill--sm ${activeTag === 'all' ? 'active' : ''}" data-tag="all">All</button>
-        ${tags.map(t => `<button class="filter-pill filter-pill--sm ${activeTag === t ? 'active' : ''}" data-tag="${t}">${t}</button>`).join('')}
+        <button class="filter-pill filter-pill--sm ${activeTags.size === 0 ? 'active' : ''}" data-tag="all">All</button>
+        ${tags.map(t => `<button class="filter-pill filter-pill--sm ${activeTags.has(t) ? 'active' : ''}" data-tag="${t}">${t}</button>`).join('')}
       </div>
     </div>
   `;
@@ -256,7 +256,7 @@ function initFilters() {
     document.querySelectorAll('#typeFilterBar .filter-pill').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeType = btn.dataset.filter;
-    activeTag = 'all';
+    activeTags.clear();
     renderProducts();
   });
 
@@ -264,8 +264,17 @@ function initFilters() {
   document.getElementById('tagFilterWrap').addEventListener('click', e => {
     const btn = e.target.closest('.filter-pill[data-tag]');
     if (!btn) return;
-    activeTag = btn.dataset.tag;
-    renderProducts(); // renderProducts calls renderTagFilter, which marks correct active pill
+    const tag = btn.dataset.tag;
+    if (tag === 'all') {
+      activeTags.clear();
+    } else {
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
+      } else {
+        activeTags.add(tag);
+      }
+    }
+    renderProducts();
   });
 }
 
@@ -588,7 +597,7 @@ function renderGlobalResults(query) {
       if (item.dataset.action === 'product') {
         closeGlobalSearch();
         activeType = item.dataset.type;
-        activeTag = 'all';
+        activeTags.clear();
         document.querySelectorAll('#typeFilterBar .filter-pill').forEach(b =>
           b.classList.toggle('active', b.dataset.filter === activeType)
         );
